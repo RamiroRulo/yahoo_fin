@@ -77,7 +77,7 @@ def get_data(ticker, start_date = None, end_date = None, index_as_date = True,
        @param: interval = "1d"
     '''
     
-    if interval not in ("1d", "1wk", "1mo", "1m"):
+    if interval not in ("1d", "1wk", "1mo", "1m","5m"):
         raise AssertionError("interval must be of of '1d', '1wk', '1mo', or '1m'")
     
     
