@@ -99,7 +99,7 @@ def get_data(ticker, start_date = None, end_date = None, index_as_date = True,
     # get the date info
     temp_time = data["chart"]["result"][0]["timestamp"]
 
-    if interval != "1m" or "5m":
+    if interval not in ['1m','5m']:
     
         # add in adjclose
         frame["adjclose"] = data["chart"]["result"][0]["indicators"]["adjclose"][0]["adjclose"]   
