@@ -84,6 +84,7 @@ def get_data(ticker, start_date = None, end_date = None, index_as_date = True,
     
     
     # build and connect to URL
+    requests = requests_cache.CachedSession('demo_cache', expire_after=0)
     site, params = build_url(ticker, start_date, end_date, interval)
     resp = requests.get(site, params = params, headers = headers)
     
