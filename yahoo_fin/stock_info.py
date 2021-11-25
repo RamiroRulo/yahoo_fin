@@ -5,7 +5,7 @@ import io
 import re
 import json
 import datetime
-from proxy_requests import ProxyRequests
+
 
 try:
     from requests_html import HTMLSession
@@ -64,9 +64,20 @@ def _convert_to_numeric(s):
     
     return force_float(s)
 
-
+header={
+'authority': 'scrapeme.live',
+'dnt': '1',
+'upgrade-insecure-requests': '1',
+'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36',
+'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+'sec-fetch-site': 'none',
+'sec-fetch-mode': 'navigate',
+'sec-fetch-user': '?1',
+'sec-fetch-dest': 'document',
+'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+}
 def get_data(ticker, start_date = None, end_date = None, index_as_date = True,
-             interval = "1d", headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+             interval = "1d", headers = header
 ):
     '''Downloads historical stock price data into a pandas data frame.  Interval
        must be "1d", "1wk", "1mo", or "1m" for daily, weekly, monthly, or minute data.
