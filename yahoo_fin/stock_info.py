@@ -18,7 +18,7 @@ except Exception:
              
              After installation, you may have to restart your Python session.""")
 
-requests = requests_cache.CachedSession('demo_cache', expire_after=1)
+requests = requests_cache.CachedSession('demo_cache', expire_after=0)
 
 base_url = "https://query1.finance.yahoo.com/v8/finance/chart/"
 
