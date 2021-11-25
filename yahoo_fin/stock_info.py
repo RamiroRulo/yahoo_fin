@@ -5,7 +5,7 @@ import io
 import re
 import json
 import datetime
-import requests_cache
+from proxy_requests import ProxyRequests
 
 try:
     from requests_html import HTMLSession
@@ -18,7 +18,7 @@ except Exception:
              
              After installation, you may have to restart your Python session.""")
 
-requests = requests_cache.CachedSession('demo_cache', expire_after=0)
+requests = ProxyRequests('https://api.ipify.org')
 
 base_url = "https://query1.finance.yahoo.com/v8/finance/chart/"
 
@@ -84,7 +84,7 @@ def get_data(ticker, start_date = None, end_date = None, index_as_date = True,
     
     
     # build and connect to URL
-    requests = requests_cache.CachedSession(ticker, expire_after=1)
+    requests = ProxyRequests('https://api.ipify.org')
     site, params = build_url(ticker, start_date, end_date, interval)
     resp = requests.get(site, params = params, headers = headers)
     
