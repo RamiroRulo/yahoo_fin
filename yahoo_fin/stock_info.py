@@ -5,6 +5,7 @@ import io
 import re
 import json
 import datetime
+import requests_cache
 
 try:
     from requests_html import HTMLSession
@@ -17,7 +18,8 @@ except Exception:
              
              After installation, you may have to restart your Python session.""")
 
-    
+requests = requests_cache.CachedSession('demo_cache')
+
 base_url = "https://query1.finance.yahoo.com/v8/finance/chart/"
 
 def build_url(ticker, start_date = None, end_date = None, interval = "1d"):
